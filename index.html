@@ -53,11 +53,27 @@
             justify-content: center;
         }
     </style>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                function getQueryParam(name) {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    return urlParams.get(name);
+                }
+    
+                const userName = getQueryParam('user');
+    
+                if(userName) {
+                    document.getElementById('username').innerText = `Welcome, ${userName}!`;
+                }
+            });
+        </script>
 </head>
 <body>
 
 <div class="container">
+    <h2 id="username">Welcome     </h2>
     <h2>Select Your Options</h2>
+
     <div class="row g-3">
         <div class="col-md-4">
             节日
