@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nordic Style Dropdown Selection</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>    
+    <style>
+        body {
+            background-color: #fafafa; /* Light background */
+            color: #333; /* Soft text color */
+            font-family: 'Arial', sans-serif; /* Clean font */
+        }
+        .container {
+            max-width: 700px;
+            margin-top: 50px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 6px 20px rgba(0,0,0,.1); /* Soft shadow */
+        }
+        h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .form-select {
+            background: #f4f4f4; /* Light grey background for inputs */
+            border: 1px solid #eaeaea; /* Soft border color */
+            color: #333; /* Text color */
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #0056b3; /* Nordic blue for primary button */
+            border: none;
+        }
+        .btn-secondary {
+            background-color: #6c757d; /* Default secondary button */
+            border: none;
+        }
+        #contentArea {
+            background-color: #e9ecef; /* Light grey background */
+            color: #333; /* Text color */
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            min-height: 60px; /* Ensures visibility even if empty */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Select Your Options</h2>
+    <div class="row g-3">
+        <div class="col-md-4">
+            节日
+            <select id="dropdown1" class="form-select">
+                <option value="周末">周末</option>
+                <option value="工作日">工作日</option>
+                <option value="圣诞">圣诞</option>
+                <option value="跨年">跨年</option>
+                <option value="情人节">情人节</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            同行者
+
+            <select id="dropdown2" class="form-select">
+                <option value="自己"> 自己</option>
+                <option value="朋友"> 朋友</option>
+                <option value="闺蜜> 闺蜜</option>
+                <option value="情侣"> 情侣</option>
+
+            </select>
+        </div>
+        <div class="col-md-4">
+            语气
+            <select id="dropdown3" class="form-select">
+                
+                <option value="活泼">活泼</option>
+                <option value="简约">简约</option>
+                <option value="怼人">怼人</option>
+
+            </select>
+        </div>
+    </div>
+    <div class="text-center">
+        <button id="submitBtn" class="btn btn-primary col-md-12">生成评论</button>
+    </div>
+    <br><br>
+    <div id="contentArea"></div>
+    <div class="text-center">
+        <button id="copyBtn" class="btn btn-secondary" style="display:none;">Copy</button>
+    </div>
+</div>
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
+
+<script>
+document.getElementById('submitBtn').addEventListener('click', function() {
+    const dropdown1Value = document.getElementById('dropdown1').value;
+    const dropdown2Value = document.getElementById('dropdown2').value;
+    const dropdown3Value = document.getElementById('dropdown3').value;
+
+    // Generate content based on selections
+    const content = `You selected: ${dropdown1Value}, ${dropdown2Value}, and ${dropdown3Value}`;
+    
+    // Display the generated content
+    document.getElementById('contentArea').innerText = content;
+
+    // Show the copy button
+    document.getElementById('copyBtn').style.display = 'block';
+});
+
+document.getElementById('copyBtn').addEventListener('click', function() {
+    const content = document.getElementById('contentArea').innerText;
+    navigator.clipboard.writeText(content).then(() => {
+        // Optional: Display a message confirming the content was copied
+        alert('Content copied to clipboard');
+    });
+});
+</script>
+</body>
+</html>
