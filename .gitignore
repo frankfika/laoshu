@@ -1,0 +1,14 @@
+# 忽略所有.log文件
+*.log
+
+# 忽略特定目录
+/node_modules/
+/dist/
+
+# 忽略特定文件
+/config/secret.yml
+
+# 不忽略important.log文件，即使上面规则指定忽略所有.log文件
+!/logs/important.log
+
+keyvalue.txt
